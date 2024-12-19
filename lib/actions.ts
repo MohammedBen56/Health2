@@ -244,6 +244,7 @@ export const createAppointment = async (appointment: any) => {
 
         const response = await query(sql, [app_sql]);
         console.log("LOOOOOOKKK",response);
+        if(response === undefined){return "Error: Duplicate appointment: A doctor cannot have more than one appointment at the same schedule."}
 
         return (response as any).insertId; 
 
