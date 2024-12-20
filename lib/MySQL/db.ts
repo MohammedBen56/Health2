@@ -7,6 +7,7 @@ const mysqlUser = process.env.MYSQL_USER;
 const mysqlPassword = process.env.MYSQL_PASSWORD;
 const mysqlDatabase = process.env.MYSQL_DATABASE;
 const mysqlPort = process.env.DATABASE_PORT;
+const mysqlSSL = process.env.DB_SSL_CA;
 
 
 // Check if environment variables are set.  This is very important
@@ -22,9 +23,7 @@ const pool = mysql.createPool({
     user: mysqlUser, 
     password: mysqlPassword,
     database: mysqlDatabase,
-    ssl: {
-        ca: fs.readFileSync('ca.pem') // Path to the downloaded CA certificate
-    }
+    ssl: mysqlSSL ? { ca: fs.readFileSync(mysqlSSL) } : undefined // Path to the downloaded CA certificate
 });
 
 const promisePool = pool.promise();
