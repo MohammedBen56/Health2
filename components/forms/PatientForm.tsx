@@ -47,7 +47,8 @@ const PatientForm = () => {
       setIsLoading(true); 
       console.log(isLoading);
     
-    const response = await register(values); // Call your register function
+      const response = await register(values);
+      console.log(response)  // Call your register function
     //console.log(response) 
     if (response?.error) {
       console.log("Registration error:", response.error);
