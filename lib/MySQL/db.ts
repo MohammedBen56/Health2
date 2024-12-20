@@ -23,7 +23,7 @@ const pool = mysql.createPool({
     user: mysqlUser, 
     password: mysqlPassword,
     database: mysqlDatabase,
-    ssl: mysqlSSL ? { ca: fs.readFileSync(mysqlSSL) } : undefined // Path to the downloaded CA certificate
+    ssl: mysqlSSL ? { ca: mysqlSSL } : undefined, // Path to the downloaded CA certificate
 });
 
 const promisePool = pool.promise();
